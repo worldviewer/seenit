@@ -41,12 +41,46 @@
 	</div>
 
 	<script>
-		$(document).ready(function() {
-			var app = new annotator.App();
-			app.include(annotator.ui.main);
-			app.include(annotator.storage.http);
-			app.start();
 
+		// See doc's at http://docs.annotatorjs.org/en/latest/modules/storage.html
+
+		// STEP 1: Get Annotator to show up on the page:
+
+		// In rails, this involves adding the javascript_include_tag call to 
+		// 'annotator.min' at the top of this application.html.erb file.
+
+		// That annotator.min file referenced above should be placed at
+		// app/vendor/assets/javascripts/annotator.min.js.
+
+		// Rails requires yet another change, in the file at
+		// app/assets/images/javascripts/application.js ...
+
+		// //= require annotator.min
+
+		// With those two changes in place, and once jQuery is finished loading,
+		// it is at this point possible to simply type the following four lines
+		// of code into the console.  Of course, as you can see, it will alternatively
+		// work to simply include it at the end of the application.html.erb body,
+		// within script tags.
+
+		// Of course, please note that -- at this point -- there is not yet any
+		// actual storage of annotations occurring, and if you attempt to save an
+		// annotation, a flash message will appear saying as much at the top of the
+		// screen.
+ 
+ 		// Wait for jQuery to load, then ...
+		$(document).ready(function() {
+
+			// Instantiate the Annotator application
+			var app = new annotator.App();
+
+			// Use the standard user interface
+			app.include(annotator.ui.main);
+
+			// Use the standard remote storage
+			app.include(annotator.storage.http);
+
+			app.start();
 			console.log("Annotations started!");
 		});
 	</script>

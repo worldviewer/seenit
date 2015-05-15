@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require_tree .
 //= require annotator.min
-//= require comments
 
 var offset = 300,
 	//browser window scroll (in pixels) after which the "back to top" link opacity is reduced
