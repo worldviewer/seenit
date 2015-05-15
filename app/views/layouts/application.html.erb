@@ -10,6 +10,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'annotator.min' => true %>
   <%= csrf_meta_tags %>
 
 </head>
@@ -38,6 +39,17 @@
 		<p class="notice"><%= notice %></p>
 <%= yield %>
 	</div>
+
+	<script>
+		$(document).ready(function() {
+			var app = new annotator.App();
+			app.include(annotator.ui.main);
+			app.include(annotator.storage.http);
+			app.start();
+
+			console.log("Annotations started!");
+		});
+	</script>
 
 </body>
 </html>
