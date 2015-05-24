@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/worldviewer/seenit/blob/master/seenit.gif" />
+</p>
+
 # Seen-It: A Reddit Clone for Interview Questions
 
 Seen-It is a coding interview preparation tool designed to service graduates of coding bootcamps and other people looking to become employed as a full-stack web developer.

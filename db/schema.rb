@@ -63,9 +63,6 @@ ActiveRecord::Schema.define(version: 20150524002200) do
     t.integer "tag_id"
   end
 
-  add_index "posts_tags", ["post_id"], name: "index_posts_tags_on_post_id"
-  add_index "posts_tags", ["tag_id"], name: "index_posts_tags_on_tag_id"
-
   create_table "tags", force: :cascade do |t|
     t.string   "category"
     t.datetime "created_at", null: false
