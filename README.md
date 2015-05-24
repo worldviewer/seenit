@@ -97,9 +97,6 @@ They should correspond with the routes listed at http://docs.annotatorjs.org/en/
 * read
 * update
 * delete
-
-and optionally ...
-
 * search
 
 ```
