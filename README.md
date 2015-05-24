@@ -95,7 +95,9 @@ $(document).ready(function() {
 
 It's a good idea to get to validate that this works before continuing on to add in a back end.  When you load the site, and select text on the site, does the Annotator tool pop up?
 
-## Part 2: Setting up a datastore to persist annotations on the back end, with Ruby on Rails.  I'll just assume the default SQLlite database
+## Part 2: Setting up a datastore to persist annotations on the back end, with Ruby on Rails.
+
+(I'll just assume the default SQLlite database)
 
 ### First, create a set of routes
 
