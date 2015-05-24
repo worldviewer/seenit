@@ -22,8 +22,14 @@ git clone https://github.com/worldviewer/seenit
 
 bundle install
 
+rake db:reset
+
 rails server
 ```
+
+At this point, there are no users.  To create a user, point your browser to localhost:3000/users/sign_up, and fill out all fields.
+
+At this point, the site is ready!
 
 # Addendum: How to Add Annotations to a Ruby Project
 
