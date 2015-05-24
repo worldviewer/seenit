@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/worldviewer/seenit/blob/master/seenit.gif" />
+  <img src="https://github.com/ThePeerReviews/seenit/blob/master/seenit.gif" />
 </p>
 
 # Seen-It: A Reddit Clone for Interview Questions
