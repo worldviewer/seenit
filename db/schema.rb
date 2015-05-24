@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513183101) do
+ActiveRecord::Schema.define(version: 20150524002200) do
+
+  create_table "annotations", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "annotator_schema_version"
+    t.text     "text"
+    t.text     "quote"
+    t.string   "uri"
+    t.text     "ranges"
+    t.string   "user"
+    t.string   "consumer"
+    t.text     "tags"
+    t.text     "permissions"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "commenter"
