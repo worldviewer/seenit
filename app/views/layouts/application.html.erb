@@ -67,22 +67,47 @@
 		// actual storage of annotations occurring, and if you attempt to save an
 		// annotation, a flash message will appear saying as much at the top of the
 		// screen.
- 
- 		// Wait for jQuery to load, then ...
+
 		$(document).ready(function() {
+
+			var currentPage = window.location.href;
+
+			console.log(currentPage);
+
+			var pageUri = function() {
+				return {
+					beforeAnnotationCreated: function (ann) {
+						ann.uri = currentPage;
+					}
+				}
+			};
 
 			// Instantiate the Annotator application
 			var app = new annotator.App();
 
 			// Use the standard user interface
-			app.include(annotator.ui.main);
+			app.include(annotator.ui.main, {element: document.body});
 
-			// Use the standard remote storage
-			app.include(annotator.storage.http);
+			// Configure the http() module to address the
+			// annotations API
+			app.include(annotator.storage.http, {
+				prefix: currentPage + 'annotator'
+			});
 
-			app.start();
+			// Send the current page
+			app.include(pageUri);
+
+			// Use the promise returned from start to load
+			// annotations from the storage component
+			app.start()
+			.then(function() {
+				app.annotations.load({uri: currentPage});
+				console.log("Annotations loaded");
+			});
 			console.log("Annotations started!");
+
 		});
+
 	</script>
 
 </body>
