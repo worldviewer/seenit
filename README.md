@@ -2,11 +2,13 @@
   <img src="https://github.com/ThePeerReviews/seenit/blob/master/seenit.gif" />
 </p>
 
-# Seen-It: A Reddit Clone for Interview Questions
+# Seen-It
+
+## A Reddit Clone for Interview Questions
 
 Seen-It is a coding interview preparation tool designed to service graduates of coding bootcamps and other people looking to become employed as a full-stack web developer.
 
-# Technologies
+## Technologies
 
 * Ruby on Rails
 * Bootstrap
@@ -17,7 +19,7 @@ Seen-It is a coding interview preparation tool designed to service graduates of 
 * Image uploads with Paperclip
 * Act-as-Votable gem
 
-# Installation
+## Installation
 
 ```
 mkdir seenit
@@ -35,11 +37,36 @@ At this point, there are no users.  To create a user, point your browser to loca
 
 At this point, the site is ready!
 
-# Addendum: How to Add Annotations to a Ruby Project
+## Lessons Learned
+
+* The first script was like ...
+
+<p align="center">
+  <img src="https://github.com/ThePeerReviews/seenit/blob/master/stuck.gif" />
+</p>
+
+ Then, a day later, the second Nokogiri script was done in 5 minutes flat ...
+
+<p align="center">
+  <img src="https://github.com/ThePeerReviews/seenit/blob/master/programming.gif" />
+</p>
+
+ And I was like ...
+
+<p align="center">
+  <img src="https://github.com/ThePeerReviews/seenit/blob/master/winning.gif" />
+</p>
+
+* It's generally best to simulate a web browser agent; Ruby is not a web browser, and companies will block your scraper
+* Be wary of git merges
+* When CSS elements exceed the boundaries of their box, positioning becomes unpredictable
+* When in doubt, scan github for reference designs (this helped quite a bit for incorporating Annotator)
+
+## Addendum: How to Add Annotations to a Ruby Project
 
 I found that there aren't currently any functional, simple reference designs on how to do this, so I will create one here with this project.
 
-## Part 1: Setting up the Annotator (2.0) on the front end
+### Part 1: Setting up the Annotator (2.0) on the front end
 
 See doc's at http://docs.annotatorjs.org/en/latest/modules/storage.html
 
@@ -95,11 +122,11 @@ $(document).ready(function() {
 
 It's a good idea to get to validate that this works before continuing on to add in a back end.  When you load the site, and select text on the site, does the Annotator tool pop up?
 
-## Part 2: Setting up a datastore to persist annotations on the back end, with Ruby on Rails.
+### Part 2: Setting up a datastore to persist annotations on the back end, with Ruby on Rails.
 
 (I'll just assume the default SQLlite database)
 
-### First, create a set of routes
+#### First, create a set of routes
 
 They should correspond with the routes listed at http://docs.annotatorjs.org/en/v1.2.x/storage.html:
 
@@ -123,7 +150,7 @@ Rails.application.routes.draw do
 end
 ```
 
-### Next, create a new annotation model & migration
+#### Next, create a new annotation model & migration
 
 The new model should include the id:string and text:text data fields, like so:
 
@@ -183,7 +210,7 @@ create_table :annotator_store_ranges do |t|
 end
 ```
 
-### Now, create a controller to handle these Annotator API requests
+#### Now, create a controller to handle these Annotator API requests
 
 ```
 rails g controller annotation root index create read update delete search
@@ -283,7 +310,7 @@ ActionController::RoutingError (No route matches [POST] "/store/annotations"):
 
 This brings us to step 3!
 
-## Part 3: Wire up the Annotator.js client to talk to our API
+### Part 3: Wire up the Annotator.js client to talk to our API
 
 We have to revisit that client side javascript in the app/views/layouts/application.html.erb file:
 
