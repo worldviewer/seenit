@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513183101) do
+ActiveRecord::Schema.define(version: 20150524002200) do
+
+  create_table "annotations", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "annotator_schema_version"
+    t.text     "text"
+    t.text     "quote"
+    t.string   "uri"
+    t.text     "ranges"
+    t.string   "user"
+    t.string   "consumer"
+    t.text     "tags"
+    t.text     "permissions"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "commenter"
@@ -48,9 +62,6 @@ ActiveRecord::Schema.define(version: 20150513183101) do
     t.integer "post_id"
     t.integer "tag_id"
   end
-
-  add_index "posts_tags", ["post_id"], name: "index_posts_tags_on_post_id"
-  add_index "posts_tags", ["tag_id"], name: "index_posts_tags_on_tag_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "category"
